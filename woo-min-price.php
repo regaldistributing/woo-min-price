@@ -19,6 +19,12 @@ if ( ! defined( 'MAIN_PLUGIN_FILE' ) ) {
 	define( 'MAIN_PLUGIN_FILE', __FILE__ );
 }
 
+// automatically include all extension PHP files from src
+$src_files = glob(plugin_dir_path(__FILE__) . 'src/*.php');
+foreach ($src_files as $src_file) {
+    require_once $src_file;
+}
+
 require_once plugin_dir_path( __FILE__ ) . '/vendor/autoload_packages.php';
 
 use WooMinPrice\Admin\Setup;
